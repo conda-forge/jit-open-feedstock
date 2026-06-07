@@ -1,13 +1,13 @@
 {% set name = "jit-open" %}
-{% set version = "1.0.2" %}
+{% set version = "1.0.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jit_open-{{ version }}.tar.gz
-  sha256: 288a220c3c7a1adaca8bb198dbb5b71e15544e792f93f0ade4df7ddda8dc69b7
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jit_open-{{ version }}.tar.gz
+  sha256: 9c87da65129a2306c036cb3955edf09c9b5f38157a67ed8836e5a32d07f3b35c
   patches:
     - 001-entry-fixes.patch
 
