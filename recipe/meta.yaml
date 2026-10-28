@@ -1,5 +1,6 @@
 {% set name = "jit-open" %}
 {% set version = "1.0.3" %}
+{% set python_min = "3.11" %}
 
 package:
   name: {{ name|lower }}
@@ -8,20 +9,19 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jit_open-{{ version }}.tar.gz
   sha256: 9c87da65129a2306c036cb3955edf09c9b5f38157a67ed8836e5a32d07f3b35c
-  patches:
-    - 001-entry-fixes.patch
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}.*
     - pip
+    - hatchling
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -29,6 +29,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}.*
     - pip
 
 about:
